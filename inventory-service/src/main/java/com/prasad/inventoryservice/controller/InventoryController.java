@@ -18,6 +18,11 @@ public class InventoryController {
     private final InventoryService inventoryService;
 
     //http://localhost:8082/api/inventory?skuCode=iphone_13&skuCode
+
+    @GetMapping("/hello")
+    public String printHello(){
+        return "Inventory Service is up!";
+    }
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<InventoryResponse> isInStock(@RequestParam List<String> skuCode){
