@@ -13,6 +13,11 @@ public class OrderController {
 
     private final OrderService orderService;
 
+    @GetMapping("/hello")
+    public String printHello(){
+        return "Order Service is up!";
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public String placeOrder(@RequestBody OrderRequest orderRequest){

@@ -18,6 +18,11 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @GetMapping("/hello")
+    public String printHello(){
+        return "Product Service is up!";
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void createProduct(@RequestBody ProductRequest productRequest) {
