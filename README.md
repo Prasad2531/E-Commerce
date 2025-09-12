@@ -1,108 +1,56 @@
-Microservices E-Commerce Platform
-This project is a fully-featured e-commerce application built using a microservices architecture. Each core functionality of the platform is encapsulated within its own independent service, promoting scalability, maintainability, and resilience.
+# 🛍️ Microservices E-Commerce Platform
 
-The system is designed to handle key e-commerce operations, including product catalog management, inventory tracking, order processing, and user notifications.
+This project is a fully-featured e-commerce application built using a **microservices architecture**.  
+Each core functionality of the platform is encapsulated within its own independent service, promoting **scalability, maintainability, and resilience**.
 
-🏛️ Architecture Overview
-The application follows a classic microservices pattern where different services communicate with each other, typically through REST APIs or a message broker.
+The system is designed to handle key e-commerce operations, including **product catalog management, inventory tracking, order processing, and user notifications**.
 
-API Gateway: All external client requests (from a web or mobile app) are routed through the API Gateway. It is the single entry point into the system, responsible for request routing, composition, and security.
+---
 
-Service Discovery: The Discovery Server acts as a registry for all microservices. Each service registers itself upon startup, allowing other services to find and communicate with it without hardcoding hostnames and ports.
+## 🏛️ Architecture Overview
 
-Service Communication: Services communicate with each other as needed. For example, the order-service will likely communicate with the inventory-service to check stock levels and the product-service to get product details.
+The application follows a **classic microservices pattern** where services communicate via **REST APIs** or a **message broker**.
 
-✨ Features
-Product Management: Add, update, and retrieve product information.
+- **API Gateway**: Single entry point for all external client requests. Handles request routing, composition, and security.  
+- **Service Discovery**: Discovery Server (e.g., Eureka) acts as a registry where all microservices register themselves, allowing dynamic service lookup.  
+- **Service Communication**: Services interact as needed. For example, the `order-service` communicates with the `inventory-service` to check stock levels and with the `product-service` to fetch product details.
+  <img width="812" height="579" alt="image" src="https://github.com/user-attachments/assets/213123f5-5aa6-4563-a7e1-f99d97800192" />
 
-Inventory Control: Real-time tracking of product stock levels.
+---
 
-Order Processing: Create and manage customer orders.
+## ✨ Features
 
-Service Discovery: Dynamically discover and communicate between services.
+- **Product Management**: Add, update, and retrieve product information.  
+- **Inventory Control**: Real-time tracking of product stock levels.  
+- **Order Processing**: Create and manage customer orders.  
+- **Service Discovery**: Dynamically discover and communicate between services.  
+- **Centralized Entry Point**: A single API Gateway to manage and route all requests.  
+- **Asynchronous Notifications**: Dedicated notification service (e.g., email, SMS).  
+- **Containerized**: Fully containerized with **Docker** for easy setup and deployment.  
 
-Centralized Entry Point: A single API Gateway to manage and route all incoming requests.
+---
 
-Asynchronous Notifications: A dedicated service for handling notifications.
+## 📦 Services
 
-Containerized: Fully containerized using Docker for easy setup and deployment.
+| Service             | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| **api-gateway**     | Routes client requests to the appropriate microservice.                     |
+| **discovery-server**| Service registry (e.g., Eureka) for microservice registration and discovery. |
+| **product-service** | Manages product information (name, description, price).                      |
+| **inventory-service**| Manages stock quantity for products.                                        |
+| **order-service**   | Handles customer order creation and management.                              |
+| **notification-service** | Sends notifications (email, SMS) to users after order placement.        |
 
-📦 Services
-This project contains the following microservices:
+---
 
-Service
+## 🛠️ Tech Stack
 
-Description
+- **Backend**: Java, Spring Boot, Spring Cloud  
+- **Build Tool**: Maven  
+- **Containerization**: Docker, Docker Compose  
+- **Database**: PostgreSQL 
 
-api-gateway
+---
 
-The single entry point for all client requests. Routes traffic to the appropriate microservice.
 
-discovery-server
 
-A service registry (e.g., Eureka) where all other microservices register themselves.
-
-product-service
-
-Manages all product-related information, such as product name, description, and price.
-
-inventory-service
-
-Manages the stock quantity for each product.
-
-order-service
-
-Handles the creation and management of customer orders.
-
-notification-service
-
-Responsible for sending notifications (e.g., email, SMS) to users, for instance, after an order is placed.
-
-🛠️ Tech Stack
-Backend: Java, Spring Boot, Spring Cloud
-
-Build Tool: Maven
-
-Containerization: Docker, Docker Compose
-
-Database: (e.g., PostgreSQL, MongoDB - You can specify this)
-
-🚀 Getting Started
-Follow these instructions to get the project up and running on your local machine.
-
-Prerequisites
-Make sure you have the following software installed:
-
-Java Development Kit (JDK 17 or later)
-
-Apache Maven
-
-Docker and Docker Compose
-
-Installation & Running the Application
-Clone the repository:
-
-git clone <your-repository-url>
-cd <your-repository-directory>
-
-Build the application:
-Use Maven to build all the microservice JAR files.
-
-mvn clean package -DskipTests
-
-This command will build each microservice and create the executable JAR file in its target directory.
-
-Run with Docker Compose:
-Once the projects are built, you can start all the services using Docker Compose.
-
-docker-compose up --build
-
-This command will build the Docker images for each service (if they don't exist) and start the containers.
-
-The application should now be running! The API Gateway will be available at http://localhost:<gateway-port>.
-
-⚙️ Configuration
-Configuration for each service can be found in its respective src/main/resources/application.properties or application.yml file. Environment-specific settings, such as database credentials or service URLs, can be managed using Spring profiles or environment variables within the docker-compose.yml file.
-
-🤝 Contributing
-Contributions are welcome! Please feel free to submit a pull request or open an issue.
